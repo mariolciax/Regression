@@ -29,3 +29,18 @@ prawdopodobienstwa(wsp,c(1,kredyt[1,2:ncol(kredyt)]))
 klient1<-kredyt[1,2:ncol(kredyt)]
 
 predict(model,klient1,type="response")
+
+
+#bayess
+model_bic=step(model,k=log(nrow(kredyt)))
+wsp2<-model_bic$coefficients
+
+
+#dalej bez sensu
+klient<-kredyt[which(kredyt$famges==1 & kredyt$moral==4  &kredyt$laufkont==2),]
+
+prawdopodobienstwa(wsp,c(1,klient))
+
+#nie dziala
+x=c(2,33,4,5,4,1)
+prawdopodobienstwa(wsp2,as.numeric(x))
